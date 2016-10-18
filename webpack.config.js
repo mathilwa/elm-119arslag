@@ -15,7 +15,7 @@ var TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'd
 var commonConfig = {
 
   output: {
-    path:       path.resolve( __dirname, 'dist/' ),
+    path:       path.resolve( __dirname, 'src/public/dist/' ),
     filename: '[hash].js',
   },
 
@@ -36,7 +36,7 @@ var commonConfig = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/static/index.html',
+      template: 'src/public/index.html',
       inject:   'body',
       filename: 'index.html'
     })
@@ -54,7 +54,7 @@ if ( TARGET_ENV === 'development' ) {
 
     entry: [
       'webpack-dev-server/client?http://localhost:8080',
-      path.join( __dirname, 'src/static/index.js' )
+      path.join( __dirname, 'src/public/index.js' )
     ],
 
     devServer: {
@@ -90,7 +90,7 @@ if ( TARGET_ENV === 'production' ) {
 
   module.exports = merge( commonConfig, {
 
-    entry: path.join( __dirname, 'src/static/index.js' ),
+    entry: path.join( __dirname, 'src/public/index.js' ),
 
     module: {
       loaders: [
@@ -113,8 +113,8 @@ if ( TARGET_ENV === 'production' ) {
     plugins: [
       new CopyWebpackPlugin([
         {
-          from: 'src/static/img/',
-          to:   'static/img/'
+          from: 'src/public/img/',
+          to:   'public/img/'
         },
         {
           from: 'src/favicon.ico'
