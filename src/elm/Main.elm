@@ -6,7 +6,6 @@ import Html.Events exposing ( onClick )
 -- component import example
 import Components.Hello exposing ( hello )
 
-
 -- APP
 main : Program Never
 main =
@@ -39,13 +38,9 @@ view model =
     div [ class "row" ][
       div [ class "col-xs-12" ][
         div [ class "jumbotron" ][
-          img [ src "static/img/elm.jpg", style styles.img ] []                                    -- inline CSS (via var)
+          img [ src "static/img/fjelltur.jpg", style styles.img ] []                                    -- inline CSS (via var)
           , hello model                                                                     -- ext 'hello' component (takes 'model' as arg)
-          , p [] [ text ( "Elm Webpack Starter" ) ]
-          , button [ class "btn btn-primary btn-lg", onClick Increment ] [                  -- click handler
-            span[ class "glyphicon glyphicon-star" ][]                                      -- glyphicon
-            , span[][ text "FTW!" ]
-          ]
+          , p [] [ text ( "En start for bursdagsside" ) ]
         ]
       ]
     ]
@@ -57,7 +52,7 @@ styles : { img : List ( String, String ) }
 styles =
   {
     img =
-      [ ( "width", "33%" )
+      [ ( "width", "50%" )
       , ( "border", "4px solid #337AB7")
       ]
   }
