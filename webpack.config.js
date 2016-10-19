@@ -16,7 +16,7 @@ var commonConfig = {
 
   output: {
     path:       path.resolve( __dirname, 'src/public/dist/' ),
-    filename: '[hash].js',
+    filename: 'app.bundle.js',
   },
 
   resolve: {
@@ -114,7 +114,7 @@ if ( TARGET_ENV === 'production' ) {
       new CopyWebpackPlugin([
         {
           from: 'src/public/img/',
-          to:   'public/img/'
+          to:   'img/'
         },
         {
           from: 'src/favicon.ico'
@@ -124,7 +124,7 @@ if ( TARGET_ENV === 'production' ) {
       new webpack.optimize.OccurenceOrderPlugin(),
 
       // extract CSS into a separate file
-      new ExtractTextPlugin( './[hash].css', { allChunks: true } ),
+      new ExtractTextPlugin( './app.bundle.css', { allChunks: true } ),
 
       // minify & mangle JS/CSS
       new webpack.optimize.UglifyJsPlugin({

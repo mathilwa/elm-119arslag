@@ -38,7 +38,7 @@ view model =
     div [ class "row" ][
       div [ class "col-xs-12" ][
         div [ class "jumbotron" ][
-          img [ src "static/img/fjelltur.jpg", style styles.img ] []                                    -- inline CSS (via var)
+          img [ src "img/fjelltur.jpg", style styles.img ] []                                    -- inline CSS (via var)
           , hello model                                                                     -- ext 'hello' component (takes 'model' as arg)
           , p [] [ text ( "En start for bursdagsside" ) ]
         ]

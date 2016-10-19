@@ -48,7 +48,7 @@ var _moarwick$elm_webpack_starter$Main$view = function (model) {
 										_elm_lang$html$Html$img,
 										_elm_lang$core$Native_List.fromArray(
 											[
-												_elm_lang$html$Html_Attributes$src('static/img/fjelltur.jpg'),
+												_elm_lang$html$Html_Attributes$src('img/fjelltur.jpg'),
 												_elm_lang$html$Html_Attributes$style(_moarwick$elm_webpack_starter$Main$styles.img)
 											]),
 										_elm_lang$core$Native_List.fromArray(
