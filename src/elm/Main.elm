@@ -40,7 +40,7 @@ view model =
         div [ class "jumbotron" ][
           img [ src "img/fjelltur.jpg", style styles.img ] []                                    -- inline CSS (via var)
           , hello model                                                                     -- ext 'hello' component (takes 'model' as arg)
-          , p [] [ text ( "En start for bursdagsside" ) ]
+          , p [] [ text ( "En start for bursdagsside. Dette blir rått" ) ]
         ]
       ]
     ]
