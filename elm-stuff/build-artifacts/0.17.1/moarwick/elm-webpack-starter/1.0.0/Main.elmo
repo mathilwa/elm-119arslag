@@ -60,7 +60,7 @@ var _moarwick$elm_webpack_starter$Main$view = function (model) {
 											[]),
 										_elm_lang$core$Native_List.fromArray(
 											[
-												_elm_lang$html$Html$text('En start for bursdagsside')
+												_elm_lang$html$Html$text('En start for bursdagsside. Dette blir rått')
 											]))
 									]))
 							]))
