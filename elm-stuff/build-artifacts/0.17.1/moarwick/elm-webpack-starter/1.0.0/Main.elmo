@@ -24,7 +24,41 @@ var _moarwick$elm_webpack_starter$Main$view = function (model) {
 				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$class('row')
+						_elm_lang$html$Html_Attributes$class('banner')
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A2(
+						_elm_lang$html$Html$h1,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$class('banner-head')
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								A2(
+								_elm_lang$html$Html$div,
+								_elm_lang$core$Native_List.fromArray(
+									[]),
+								_elm_lang$core$Native_List.fromArray(
+									[
+										_elm_lang$html$Html$text('Bli med å feire.')
+									])),
+								A2(
+								_elm_lang$html$Html$div,
+								_elm_lang$core$Native_List.fromArray(
+									[]),
+								_elm_lang$core$Native_List.fromArray(
+									[
+										_elm_lang$html$Html$text('Torunn og Trond fyller 119 år.')
+									]))
+							]))
+					])),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$class('information pure-g')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
@@ -32,7 +66,7 @@ var _moarwick$elm_webpack_starter$Main$view = function (model) {
 						_elm_lang$html$Html$div,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html_Attributes$class('col-xs-12')
+								_elm_lang$html$Html_Attributes$class('pure-u-1-2')
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
@@ -40,27 +74,27 @@ var _moarwick$elm_webpack_starter$Main$view = function (model) {
 								_elm_lang$html$Html$div,
 								_elm_lang$core$Native_List.fromArray(
 									[
-										_elm_lang$html$Html_Attributes$class('jumbotron')
+										_elm_lang$html$Html_Attributes$class('l-box')
 									]),
 								_elm_lang$core$Native_List.fromArray(
 									[
 										A2(
-										_elm_lang$html$Html$img,
+										_elm_lang$html$Html$h3,
 										_elm_lang$core$Native_List.fromArray(
 											[
-												_elm_lang$html$Html_Attributes$src('img/fjelltur.jpg'),
-												_elm_lang$html$Html_Attributes$style(_moarwick$elm_webpack_starter$Main$styles.img)
+												_elm_lang$html$Html_Attributes$class('information-head')
 											]),
 										_elm_lang$core$Native_List.fromArray(
-											[])),
-										_moarwick$elm_webpack_starter$Components_Hello$hello(model),
+											[
+												_elm_lang$html$Html$text('Hei alle kjære venner og familie av mamma og pappa/Torunn og Trond!')
+											])),
 										A2(
 										_elm_lang$html$Html$p,
 										_elm_lang$core$Native_List.fromArray(
 											[]),
 										_elm_lang$core$Native_List.fromArray(
 											[
-												_elm_lang$html$Html$text('En start for bursdagsside. Dette blir rått')
+												_elm_lang$html$Html$text('Lørdag 3. juni 2017 vil vi gjerne få invitere dere til å bli med å feire at mamma og pappa fyller 60 år. Hold av datoen, så håper vi dere har tid, lyst og mulighet til å være med å gi disse fantastiske menneskene en bursdag de sent vil glemme!\n                              Alle er invitert med kjæreste/ektefelle/samboer, så spre gjerne ordet videre!')
 											]))
 									]))
 							]))

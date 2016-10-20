@@ -35,15 +35,21 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div [ class "container", style [("margin-top", "30px"), ( "text-align", "center" )] ][    -- inline CSS (literal)
-    div [ class "row" ][
-      div [ class "col-xs-12" ][
-        div [ class "jumbotron" ][
-          img [ src "img/fjelltur.jpg", style styles.img ] []                                    -- inline CSS (via var)
-          , hello model                                                                     -- ext 'hello' component (takes 'model' as arg)
-          , p [] [ text ( "En start for bursdagsside. Dette blir rått" ) ]
+      div [ class "banner" ][
+        h1 [class "banner-head" ] [
+        div [] [ text ("Bli med å feire.") ]
+        , div [] [ text ("Torunn og Trond fyller 119 år.") ]
         ]
       ]
-    ]
+      , div [ class "information pure-g" ][
+          div [ class "pure-u-1-2" ][
+            div [ class "l-box" ][
+              h3 [ class "information-head" ][ text ("Hei alle kjære venner og familie av mamma og pappa/Torunn og Trond!")]
+              , p [] [ text ("Lørdag 3. juni 2017 vil vi gjerne få invitere dere til å bli med å feire at mamma og pappa fyller 60 år. Hold av datoen, så håper vi dere har tid, lyst og mulighet til å være med å gi disse fantastiske menneskene en bursdag de sent vil glemme!
+                              Alle er invitert med kjæreste/ektefelle/samboer, så spre gjerne ordet videre!") ]
+            ]
+          ]
+      ]
   ]
 
 
