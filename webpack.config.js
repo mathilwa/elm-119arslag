@@ -13,6 +13,10 @@ var TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'd
 
 // common webpack config
 var commonConfig = {
+  entry: [
+    './src/public/index.js',
+    './src/public/styles/styles.css',
+  ],
 
   output: {
     path:       path.resolve( __dirname, 'src/public/dist/' ),
@@ -52,11 +56,6 @@ if ( TARGET_ENV === 'development' ) {
 
   module.exports = merge( commonConfig, {
 
-    entry: [
-      'webpack-dev-server/client?http://localhost:8080',
-      path.join( __dirname, 'src/public/index.js' )
-    ],
-
     devServer: {
       inline:   true,
       progress: true
@@ -90,8 +89,6 @@ if ( TARGET_ENV === 'production' ) {
 
   module.exports = merge( commonConfig, {
 
-    entry: path.join( __dirname, 'src/public/index.js' ),
-
     module: {
       loaders: [
         {
@@ -124,7 +121,7 @@ if ( TARGET_ENV === 'production' ) {
       new webpack.optimize.OccurenceOrderPlugin(),
 
       // extract CSS into a separate file
-      new ExtractTextPlugin( './app.bundle.css', { allChunks: true } ),
+      new ExtractTextPlugin( './styles/app.bundle.css', { allChunks: true } ),
 
       // minify & mangle JS/CSS
       new webpack.optimize.UglifyJsPlugin({
