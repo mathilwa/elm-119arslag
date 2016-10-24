@@ -12,8 +12,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "webpack --watch --devtool=cheap-module-inline-source-map",
-    "build": "rimraf dist && webpack -p --define process.env.NODE_ENV='\"production\"'",
-    "watch": "webpack --watch"
+    "build": "rimraf dist && webpack -p --define process.env.NODE_ENV='\"production\"'"
   },
   "babel": {
     "presets": [

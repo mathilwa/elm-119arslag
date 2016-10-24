@@ -19,6 +19,6 @@ set -e
 
 $(npm bin)/browserify --no-browser-field ../src/wrapper.js -o build/virtual-dom/Native/VirtualDom.js
 
-elm-make --yes --output build/test.js TestMain.elm
+elm-make --yes --output build/test.js TestApp.elm
 echo "Elm.worker(Elm.Main);" >> build/test.js
 node build/test.js

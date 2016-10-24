@@ -2,10 +2,12 @@ module Components.Invitasjon exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Models exposing (Model)
+import Messages exposing (Msg)
 
 -- hello component
-invitasjon: model -> Html a
-invitasjon model =
+invitasjonView: Model -> Html Msg
+invitasjonView model =
   div [ class "information pure-g" ][
     div [ class "pure-u-1" ][
       div [ class "l-box" ][

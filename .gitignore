@@ -1,7 +1,7 @@
 .DS_Store
 .idea/
 
-elm-stuff
+elm-stuff/build-artifacts
 src/static
 node_modules
 
