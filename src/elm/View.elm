@@ -16,9 +16,9 @@ view model =
     div []
         [ div [ class "pure-menu pure-menu-horizontal"] [
             ul [ class "pure-menu-list"] [
-                li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "/", onClick GaTilHovedside] [ text "119årslag"] ]
-                , li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "localhost:8080/#informasjon", onClick GaTilInformasjon ] [ text "Informasjon"] ]
-                , li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "localhost:8080/#kontakt", onClick GaTilKontakt ] [ text "Kontakt"] ]
+                li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "#", onClick GaTilHovedside] [ text "119årslag"] ]
+                , li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "#", onClick GaTilInformasjon ] [ text "Informasjon"] ]
+                , li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "#", onClick GaTilKontakt ] [ text "Kontakt"] ]
             ]
         ]
         , page model ]
