@@ -1,6 +1,7 @@
 .DS_Store
 .idea/
 
+src/.DS_Store
 elm-stuff/build-artifacts
 src/static
 node_modules

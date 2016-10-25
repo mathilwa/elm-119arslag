@@ -5,6 +5,7 @@ import Models exposing (Model)
 import Routing exposing (Route(..))
 import Messages exposing (Msg(..))
 
+import Meny exposing (menyView)
 import Components.Informasjon
 import Components.Hovedside
 import Components.Kontakt
@@ -14,13 +15,7 @@ import Html.Events exposing (onClick)
 view : Model -> Html Msg
 view model =
     div []
-        [ div [ class "pure-menu pure-menu-horizontal"] [
-            ul [ class "pure-menu-list"] [
-                li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "/#", onClick GaTilHovedside] [ text "119årslag"] ]
-                , li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "/#informasjon", onClick GaTilInformasjon ] [ text "Informasjon"] ]
-                , li [ class "pure-menu-item" ] [ a [ class "pure-menu-link", href "/#kontakt", onClick GaTilKontakt ] [ text "Kontakt"] ]
-            ]
-        ]
+        [ menyView model
         , page model ]
 
 type MELDING = NoOp
