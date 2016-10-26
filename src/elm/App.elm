@@ -6,6 +6,7 @@ import Messages exposing (Msg(..))
 import View exposing (view)
 
 import Routing exposing (Route)
+import String exposing (append, concat)
 
 init : Result String Route -> ( Model, Cmd Msg )
 init result =
@@ -34,7 +35,13 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
     MeldPa ->
-        ( model, Cmd.none )
+        ( { model | pameldte = (concat [model.navn, " ", model.epost]) :: model.pameldte, navn = "", epost = "" }, Cmd.none )
+
+    Navn navn ->
+        ( { model | navn = navn }, Cmd.none )
+
+    Epost epost ->
+        ( { model | epost = epost }, Cmd.none )
 
     GaTilHovedside ->
         ( model, Navigation.newUrl "")

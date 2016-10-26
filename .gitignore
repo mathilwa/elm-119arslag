@@ -6,3 +6,4 @@ elm-stuff/build-artifacts
 src/static
 node_modules
 
+npm-debug.log

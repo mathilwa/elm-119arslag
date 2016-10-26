@@ -7,6 +7,7 @@ import Messages exposing (Msg)
 
 import Components.Invitasjon exposing (invitasjonView)
 import Components.Informasjon exposing (informasjonView)
+import Components.Pamelding.Pamelding exposing (pameldingView)
 
 -- hello component
 view: Model -> Html Msg
@@ -19,4 +20,5 @@ view model =
       ]
     ]
     , invitasjonView model
+    , pameldingView model
   ]
