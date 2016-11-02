@@ -5,7 +5,6 @@ import Html.Attributes exposing (..)
 import Models exposing (Model)
 import Messages exposing (Msg)
 
--- hello component
 invitasjonView: Model -> Html Msg
 invitasjonView model =
   div [ class "information pure-g" ][

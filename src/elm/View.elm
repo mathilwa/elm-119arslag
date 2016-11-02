@@ -9,8 +9,6 @@ import Meny exposing (menyView)
 import Components.Informasjon
 import Components.Hovedside
 import Components.Kontakt
-import Html.Attributes exposing (class, href)
-import Html.Events exposing (onClick)
 
 view : Model -> Html Msg
 view model =

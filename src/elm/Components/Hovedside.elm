@@ -9,10 +9,9 @@ import Components.Invitasjon exposing (invitasjonView)
 import Components.Informasjon exposing (informasjonView)
 import Components.Pamelding.Pamelding exposing (pameldingView)
 
--- hello component
 view: Model -> Html Msg
 view model =
-  div [ class "container" ][    -- inline CSS (literal)
+  div [ class "container" ][
     div [ class "banner" ][
       h1 [class "banner-head" ] [
       div [] [ text "Bli med å feire." ]
