@@ -2,6 +2,19 @@ const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const app = express();
+const firebase = require('firebase/app');
+require("firebase/auth");
+require("firebase/database");
+
+const config = {
+    apiKey: "AIzaSyCLgXbEpruQMMzii1MxAmvkTrDMEYCHo2E",
+    authDomain: "torunnogtrond.firebaseapp.com",
+    databaseURL: "https://torunnogtrond.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: "589846987031",
+};
+
+firebase.initializeApp(config);
 
 // serve static assets normally
 app.use(express.static(__dirname + '/src/public/dist'));

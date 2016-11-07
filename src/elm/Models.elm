@@ -2,10 +2,11 @@ module Models exposing (..)
 
 import Routing
 import String
+import Components.Pamelding.Model exposing (Pameldt)
 
 
 type alias Model =
-    { pameldte : List String
+    { pameldte : List Pameldt
     , route : Routing.Route
     , navn : String
     , epost : String

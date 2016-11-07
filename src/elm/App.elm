@@ -1,12 +1,16 @@
 module App exposing (..)
 
+import Components.Pamelding.Model exposing (Pameldt)
 import Navigation
 import Models exposing (Model, initialModel)
 import Messages exposing (Msg(..))
 import View exposing (view)
-
 import Routing exposing (Route)
 import String exposing (append, concat)
+import Http
+import Task
+import Json.Decode as Json exposing ((:=))
+
 
 init : Result String Route -> ( Model, Cmd Msg )
 init result =
@@ -14,7 +18,7 @@ init result =
         currentRoute =
             Routing.routeFromResult result
     in
-        ( initialModel currentRoute, Cmd.none)
+        ( initialModel currentRoute, Http.get decodePameldte ("https://torunnogtrond.firebaseio.com/pameldte.json") |> Task.perform FetchError FetchFerdig )
 
 
 subscriptions : Model -> Sub Msg
@@ -28,29 +32,49 @@ urlUpdate result model =
         currentRoute =
             Routing.routeFromResult result
     in
-        ( { model | route = currentRoute }, Cmd.none)
+        ( { model | route = currentRoute }, Cmd.none )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-  case msg of
-    MeldPa ->
-        ( { model | pameldte = (concat [model.navn, " ", model.epost]) :: model.pameldte, navn = "", epost = "" }, Cmd.none )
+    case msg of
+        MeldPa ->
+            ( { model | pameldte = { fornavn = model.navn, etternavn = "etternavn", epost = model.epost } :: model.pameldte, navn = "", epost = "" }, Cmd.none )
 
-    Navn navn ->
-        ( { model | navn = navn }, Cmd.none )
+        Navn navn ->
+            ( { model | navn = navn }, Cmd.none )
 
-    Epost epost ->
-        ( { model | epost = epost }, Cmd.none )
+        Epost epost ->
+            ( { model | epost = epost }, Cmd.none )
 
-    GaTilHovedside ->
-        ( model, Navigation.newUrl "")
+        GaTilHovedside ->
+            ( model, Navigation.newUrl "" )
 
-    GaTilInformasjon ->
-            ( model, Navigation.newUrl "#informasjon")
+        GaTilInformasjon ->
+            ( model, Navigation.newUrl "#informasjon" )
 
-    GaTilKontakt ->
-                ( model, Navigation.newUrl "#kontakt")
+        GaTilKontakt ->
+            ( model, Navigation.newUrl "#kontakt" )
+
+        FetchFerdig allePameldte ->
+            ( { model | pameldte = allePameldte }, Cmd.none )
+
+        FetchError error ->
+            ( model, Cmd.none )
+
+
+decodePameldte : Json.Decoder (List Pameldt)
+decodePameldte =
+    Json.list decodePameldt
+
+
+decodePameldt : Json.Decoder Pameldt
+decodePameldt =
+    Json.object3 Pameldt
+        ("fornavn" := Json.string)
+        ("etternavn" := Json.string)
+        ("epost" := Json.string)
+
 
 main : Program Never
 main =

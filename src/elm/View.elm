@@ -28,7 +28,7 @@ page model =
             Components.Informasjon.informasjonView model
 
         KontaktRoute ->
-                    Components.Kontakt.kontaktView model
+            Components.Kontakt.kontaktView model
 
         NotFoundRoute ->
             notFoundView
