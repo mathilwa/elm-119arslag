@@ -5,14 +5,16 @@ import Models exposing (Model)
 import Routing exposing (Route(..))
 import Messages exposing (Msg(..))
 
+import Meny exposing (..)
 import Components.Informasjon
 import Components.Hovedside
 import Components.Kontakt
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ page model ]
+    div [ ]
+        [ menyView model,
+        page model ]
 
 
 page : Model -> Html Msg
