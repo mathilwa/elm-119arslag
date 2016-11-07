@@ -5,7 +5,6 @@ import Models exposing (Model)
 import Routing exposing (Route(..))
 import Messages exposing (Msg(..))
 
-import Meny exposing (menyView)
 import Components.Informasjon
 import Components.Hovedside
 import Components.Kontakt
@@ -13,10 +12,8 @@ import Components.Kontakt
 view : Model -> Html Msg
 view model =
     div []
-        [ menyView model
-        , page model ]
+        [ page model ]
 
-type MELDING = NoOp
 
 page : Model -> Html Msg
 page model =
