@@ -4,7 +4,7 @@ import Http
 import Components.Pamelding.Model exposing (Pameldt)
 
 type Msg
-    = MeldPa
+    = MeldPa Pameldt
     | GaTilInformasjon
     | GaTilHovedside
     | GaTilKontakt
@@ -12,3 +12,5 @@ type Msg
     | Epost String
     | FetchFerdig (List Pameldt)
     | FetchError Http.Error
+    | LagreFerdig Pameldt
+    | LagreError Http.Error

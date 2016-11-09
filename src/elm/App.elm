@@ -7,10 +7,10 @@ import Models exposing (Model, initialModel)
 import Messages exposing (Msg(..))
 import View exposing (view)
 import Routing exposing (Route)
-import String exposing (append)
 import Http
 import Task
-import Json.Decode as Json exposing ((:=))
+import Json.Decode as Decode exposing ((:=))
+import Json.Encode as Encode exposing (..)
 
 
 init : Result String Route -> ( Model, Cmd Msg )
@@ -39,8 +39,8 @@ urlUpdate result model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        MeldPa ->
-            ( { model | pameldte = { fornavn = model.navn, etternavn = "etternavn", epost = model.epost } :: model.pameldte, navn = "", epost = "" }, Cmd.none )
+        MeldPa pameldt ->
+            ( { model | pameldte = pameldt :: model.pameldte, epost = "", navn = "" }, lagrePameldt pameldt )
 
         Navn navn ->
             ( { model | navn = navn }, Cmd.none )
@@ -63,19 +63,61 @@ update msg model =
         FetchError error ->
             ( model, Cmd.none )
 
+        LagreFerdig pameldt ->
+            ( model, Cmd.none )
 
-decodePameldte : Json.Decoder (List Pameldt)
+        LagreError error ->
+            ( model, Cmd.none )
+
+
+lagre: Pameldt -> Task.Task Http.Error Pameldt
+lagre pameldt =
+    let
+        body =
+            encodePameldt pameldt
+                |> Encode.encode 0
+                |> Http.string
+
+        config =
+            { verb = "POST"
+            , headers = [ ( "Content-Type", "application/json" ) ]
+            , url = "https://torunnogtrond.firebaseio.com/pameldte.json"
+            , body = body
+            }
+    in
+        Http.send Http.defaultSettings config
+            |> Http.fromJson decodePameldt
+
+
+lagrePameldt : Pameldt -> Cmd Msg
+lagrePameldt pameldt =
+    lagre pameldt
+        |> Task.perform LagreError LagreFerdig
+
+
+decodePameldte : Decode.Decoder (List Pameldt)
 decodePameldte =
-    Json.dict decodePameldt
-    |> Json.map Dict.values
+    Decode.dict decodePameldt
+    |> Decode.map Dict.values
 
 
-decodePameldt : Json.Decoder Pameldt
+decodePameldt : Decode.Decoder Pameldt
 decodePameldt =
-    Json.object3 Pameldt
-        ("fornavn" := Json.string)
-        ("etternavn" := Json.string)
-        ("epost" := Json.string)
+    Decode.object2 Pameldt
+        ("navn" := Decode.string)
+        ("epost" := Decode.string)
+
+
+encodePameldt : Pameldt -> Encode.Value
+encodePameldt pameldt =
+    let
+        encodetPameldt =
+            [ ( "navn", Encode.string pameldt.navn )
+            , ( "epost", Encode.string pameldt.epost )
+            ]
+    in
+        encodetPameldt
+            |> Encode.object
 
 
 main : Program Never

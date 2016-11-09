@@ -14,9 +14,9 @@ pameldingView model =
     div [ class "information pure-g" ]
         [ div [ class "pure-u-1" ]
             [ div [ class "l-box" ]
-                [ Html.form [ onSubmit MeldPa ]
+                [ Html.form [ onSubmit ( MeldPa { navn = model.navn, epost = model.epost }) ]
                     [ input [ type' "text", placeholder "Navn", onInput Navn, value model.navn ] []
-                    , input [ type' "mail", placeholder "E-post", onInput Epost, value model.epost ] []
+                    , input [ type' "text", placeholder "E-post", onInput Epost, value model.epost ] []
                     , button [ type' "submit" ] [ text "Bli med" ]
                     ]
                 ]
@@ -29,6 +29,6 @@ pameldingView model =
 pameldte : Pameldt -> Html msg
 pameldte pameldt =
     li [ class "message" ]
-        [ span [ class "message-text" ] [ text pameldt.fornavn ]
+        [ span [ class "message-text" ] [ text pameldt.navn ]
         ]
 
