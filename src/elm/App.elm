@@ -1,12 +1,13 @@
 module App exposing (..)
 
 import Components.Pamelding.Model exposing (Pameldt)
+import Dict exposing (Dict)
 import Navigation
 import Models exposing (Model, initialModel)
 import Messages exposing (Msg(..))
 import View exposing (view)
 import Routing exposing (Route)
-import String exposing (append, concat)
+import String exposing (append)
 import Http
 import Task
 import Json.Decode as Json exposing ((:=))
@@ -65,7 +66,8 @@ update msg model =
 
 decodePameldte : Json.Decoder (List Pameldt)
 decodePameldte =
-    Json.list decodePameldt
+    Json.dict decodePameldt
+    |> Json.map Dict.values
 
 
 decodePameldt : Json.Decoder Pameldt

@@ -1,7 +1,6 @@
 module Messages exposing (..)
 
 import Http
-import String
 import Components.Pamelding.Model exposing (Pameldt)
 
 type Msg

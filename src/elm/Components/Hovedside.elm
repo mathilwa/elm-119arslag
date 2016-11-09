@@ -5,7 +5,6 @@ import Html.Attributes exposing (..)
 import Models exposing (Model)
 import Messages exposing (Msg)
 import Components.Invitasjon exposing (invitasjonView)
-import Components.Informasjon exposing (informasjonView)
 import Components.Pamelding.Pamelding exposing (pameldingView)
 
 
