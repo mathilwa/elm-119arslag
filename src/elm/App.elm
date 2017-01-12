@@ -11,6 +11,7 @@ import Http
 import Task
 import Json.Decode as Decode exposing ((:=))
 import Json.Encode as Encode exposing (..)
+import Array
 
 
 init : Result String Route -> ( Model, Cmd Msg )
@@ -40,7 +41,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         MeldPa pameldt ->
-            ( { model | pameldte = pameldt :: model.pameldte, epost = "", navn = "" }, lagrePameldt pameldt )
+            ( { model | pameldte = pameldt :: model.pameldte, epost = "", navn = "", folge = Array.empty }, lagrePameldt pameldt )
 
         Navn navn ->
             ( { model | navn = navn }, Cmd.none )
@@ -56,6 +57,12 @@ update msg model =
 
         GaTilKontakt ->
             ( model, Navigation.newUrl "#kontakt" )
+
+        LeggTilFolge ->
+            ( { model | folge = Array.push "" model.folge }, Cmd.none )
+
+        OppdaterFolge index folge ->
+            ( { model | folge = Array.set index folge model.folge }, Cmd.none )
 
         FetchFerdig allePameldte ->
             ( { model | pameldte = allePameldte }, Cmd.none )
@@ -103,9 +110,10 @@ decodePameldte =
 
 decodePameldt : Decode.Decoder Pameldt
 decodePameldt =
-    Decode.object2 Pameldt
+    Decode.object3 Pameldt
         ("navn" := Decode.string)
         ("epost" := Decode.string)
+        ("folge" := Decode.list Decode.string)
 
 
 encodePameldt : Pameldt -> Encode.Value
@@ -114,6 +122,7 @@ encodePameldt pameldt =
         encodetPameldt =
             [ ( "navn", Encode.string pameldt.navn )
             , ( "epost", Encode.string pameldt.epost )
+            , ( "folge", Encode.list (List.map Encode.string pameldt.folge))
             ]
     in
         encodetPameldt

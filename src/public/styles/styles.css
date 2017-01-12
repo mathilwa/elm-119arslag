@@ -17,6 +17,10 @@ p {
 }
 
 
+.pamelding-input {
+    display: block;
+}
+
 /*
  * -- Layout Styles --
  */

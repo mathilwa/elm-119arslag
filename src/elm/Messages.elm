@@ -8,6 +8,8 @@ type Msg
     | GaTilInformasjon
     | GaTilHovedside
     | GaTilKontakt
+    | LeggTilFolge
+    | OppdaterFolge Int String
     | Navn String
     | Epost String
     | FetchFerdig (List Pameldt)
